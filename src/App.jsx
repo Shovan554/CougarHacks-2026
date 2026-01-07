@@ -88,8 +88,8 @@ export default function App() {
       {/* Next page content */}
       <section className="nextSection">
         <div className="contentWrap">
-          <h1>Content goes here</h1>
-          <p>Pitch black section.</p>
+          <h1></h1>
+          <p></p>
         </div>
       </section>
     </div>
