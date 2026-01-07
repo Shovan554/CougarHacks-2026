@@ -1,0 +1,114 @@
+.splineFixed {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #000;
+}
+
+/* The “floor grid” */
+.splineFixed::before {
+  content: "";
+  position: absolute;
+  left: -20%;
+  right: -20%;
+  bottom: -25%;
+  height: 75%;
+  z-index: 0;
+  pointer-events: none;
+
+  /* grid lines */
+  background-image:
+    linear-gradient(rgba(255,255,255,0.12) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.12) 1px, transparent 1px);
+  background-size: 60px 60px;
+
+  /* make it look like a floor */
+  transform-origin: bottom center;
+  transform: perspective(900px) rotateX(70deg);
+  opacity: 0.8;
+
+  /* fade into darkness towards the back */
+  -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+  mask-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+}
+
+/* Make sure the Spline canvas sits above the grid */
+.splineFixed > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* your zoom class (tweak if you want) */
+.splineZoom > * {
+  transform: scale(1.8);
+  transform-origin: center;
+  width: 100% !important;
+  height: 100% !important;
+}
+
+@media (max-width: 1250px) {
+  .splineZoom > * {
+    transform: scale(1.4);
+  }
+}
+
+@media (max-width: 700px) {
+  .splineZoom > * {
+    transform: scale(1.0);
+  }
+}
+html, body, #root {
+  width: 100%;
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+
+body {
+  margin: 0;
+  overflow-x: hidden; /* prevents horizontal page shift */
+  background: #000;
+  color: #fff;
+}
+
+.page {
+  position: relative;
+}
+
+/* Put Spline ABOVE the spacer so it receives mouse events */
+.splineLayer {
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  transform: translate3d(0, var(--slideY, 0px), 0);
+  will-change: transform;
+  pointer-events: auto; /* enabled on first screen */
+}
+
+/* IMPORTANT: spacer should NOT capture pointer events */
+.spacer {
+  height: 100vh;
+  pointer-events: none;
+}
+
+/* Black content section sits above the page flow */
+.nextSection {
+  min-height: 100vh;
+  background: #000;
+  position: relative;
+  z-index: 20;
+}
+
+.contentWrap {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 80px 24px;
+}
+.splineLayer,
+.splineFixed {
+  touch-action: pan-y; /* allows vertical scrolling on mobile */
+}
+.splineLayer {
+  touch-action: pan-y; /* allows normal vertical scrolling on phones */
+}
