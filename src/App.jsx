@@ -1,10 +1,20 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import NavBar from "./components/NavBar";
+import LoadingScreen from "./pages/LoadingScreen";
 import "./App.css";
 
 export default function App() {
   const layerRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   // 1) Slide the whole Spline layer up as the user scrolls down 1 screen
   useEffect(() => {
@@ -72,6 +82,7 @@ export default function App() {
 
   return (
     <div className="page">
+      {isLoading && <LoadingScreen />}
       {/* Navbar must be OUTSIDE the spline layer so it can sit above it */}
       <NavBar />
 
@@ -80,6 +91,7 @@ export default function App() {
         <main className="splineFixed splineZoom">
           <Spline scene="https://prod.spline.design/vBRDJw-I4bvaLp3u/scene.splinecode" />
         </main>
+        <button className="registerBtn">Register Now</button>
       </div>
 
       {/* This creates the first "screen" height so you can scroll */}

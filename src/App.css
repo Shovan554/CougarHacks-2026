@@ -86,6 +86,54 @@ body {
   pointer-events: auto; /* enabled on first screen */
 }
 
+.registerBtn {
+  position: absolute;
+  top: 630px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  
+  background-color: #CD1414;
+  color: white;
+  padding: 16px 32px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  
+  /* 3D effect */
+  box-shadow: 0 6px 0 #8B0E0E;
+  transition: all 0.1s ease;
+  
+  /* Animation */
+  animation: slideUp 1.2s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.registerBtn:hover {
+  background-color: #e31616;
+  transform: translateX(-50%) translateY(-2px);
+  box-shadow: 0 8px 0 #8B0E0E;
+}
+
+.registerBtn:active {
+  box-shadow: 0 2px 0 #8B0E0E;
+  transform: translateX(-50%) translateY(4px);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateX(-50%) translateY(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+}
+
 /* IMPORTANT: spacer should NOT capture pointer events */
 .spacer {
   height: 100vh;
