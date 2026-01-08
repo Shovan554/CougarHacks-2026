@@ -7,14 +7,37 @@ import "./App.css";
 export default function App() {
   const layerRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [shouldRenderSpline, setShouldRenderSpline] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
+    // 3 second loading screen
+    const loadingTimer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
 
-    return () => clearTimeout(timer);
+    // 2 second delay before starting Spline to make "look at" smoother
+    const splineTimer = setTimeout(() => {
+      setShouldRenderSpline(true);
+    }, 2000);
+
+    return () => {
+      clearTimeout(loadingTimer);
+      clearTimeout(splineTimer);
+    };
   }, []);
+
+  const onSplineLoad = () => {
+    // Dispatch a mousemove event to the center of the screen so Spline's "Look At" starts centered
+    const x = window.innerWidth / 2;
+    const y = window.innerHeight / 2;
+    window.dispatchEvent(
+      new MouseEvent("mousemove", {
+        clientX: x,
+        clientY: y,
+        bubbles: true,
+      })
+    );
+  };
 
   // 1) Slide the whole Spline layer up as the user scrolls down 1 screen
   useEffect(() => {
@@ -89,7 +112,14 @@ export default function App() {
       {/* Spline stays fixed and slides up as you scroll */}
       <div ref={layerRef} className="splineLayer">
         <main className="splineFixed splineZoom">
-          <Spline scene="https://prod.spline.design/vBRDJw-I4bvaLp3u/scene.splinecode" />
+          {shouldRenderSpline && (
+            <div className="spline-content">
+              <Spline
+                scene="https://prod.spline.design/vBRDJw-I4bvaLp3u/scene.splinecode"
+                onLoad={onSplineLoad}
+              />
+            </div>
+          )}
         </main>
         <button className="registerBtn">Register Now</button>
       </div>

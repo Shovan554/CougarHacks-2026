@@ -39,9 +39,20 @@
   z-index: 1;
 }
 
+.spline-content {
+  width: 100%;
+  height: 100%;
+  animation: fadeIn 1.5s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
 /* your zoom class (tweak if you want) */
 .splineZoom > * {
-  transform: scale(1.9);
+  transform: scale(2.1);
   transform-origin: center;
   width: 100% !important;
   height: 100% !important;
