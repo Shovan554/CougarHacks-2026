@@ -127,10 +127,58 @@ export default function App() {
       {/* This creates the first "screen" height so you can scroll */}
       <div className="spacer" />
 
-      {/* Next page content */}
-      <section className="nextSection">
+      {/* About Section */}
+      <section id="about" className="pageSection">
         <div className="contentWrap">
-          <h1></h1>
+          <h1>About</h1>
+          <p></p>
+        </div>
+      </section>
+
+      {/* Themes Section */}
+      <section id="themes" className="pageSection">
+        <div className="contentWrap">
+          <h1>Themes</h1>
+          <p></p>
+        </div>
+      </section>
+
+      {/* Sponsors Section */}
+      <section id="sponsors" className="pageSection">
+        <div className="contentWrap">
+          <h1>Sponsors</h1>
+          <p></p>
+        </div>
+      </section>
+
+      {/* Team Section */}
+      <section id="team" className="pageSection">
+        <div className="contentWrap">
+          <h1>Team</h1>
+          <p></p>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section id="faq" className="pageSection">
+        <div className="contentWrap">
+          <h1>FAQ</h1>
+          <p></p>
+        </div>
+      </section>
+
+      {/* Itinerary Section */}
+      <section id="itinerary" className="pageSection">
+        <div className="contentWrap">
+          <h1>Itinerary</h1>
+          <p></p>
+        </div>
+      </section>
+
+      {/* Sponsor Link Section */}
+      <section id="sponsor" className="pageSection">
+        <div className="contentWrap">
+          <h1>Become a Sponsor</h1>
           <p></p>
         </div>
       </section>

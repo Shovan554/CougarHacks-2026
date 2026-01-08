@@ -5,9 +5,10 @@ const LINKS = [
   { label: "Home", href: "#home", target: 0 },
   { label: "About", href: "#about", target: 1 },
   { label: "Themes", href: "#themes", target: 2 },
-  { label: "Itinerary", href: "#itinerary", target: 3 },
+  { label: "Sponsors", href: "#sponsors", target: 3 },
   { label: "Team", href: "#team", target: 4 },
   { label: "FAQ", href: "#faq", target: 5 },
+   {label: "Itenerary", href: "#itinerary", target: 6 },
 ];
 
 export default function NavBar({ onNavigate }) {
@@ -55,7 +56,9 @@ export default function NavBar({ onNavigate }) {
   const goTo = (idx) => {
     setActiveIndex(idx);
 
-    if (onNavigate) {
+    if (idx === 0) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else if (onNavigate) {
       onNavigate(LINKS[idx].target);
     } else {
       const id = LINKS[idx].href.replace("#", "");
