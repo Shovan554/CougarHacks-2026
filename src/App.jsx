@@ -13,12 +13,12 @@ export default function App() {
     // 3 second loading screen
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 5000);
 
     // 2 second delay before starting Spline to make "look at" smoother
     const splineTimer = setTimeout(() => {
       setShouldRenderSpline(true);
-    }, 2000);
+    }, 0);
 
     return () => {
       clearTimeout(loadingTimer);
