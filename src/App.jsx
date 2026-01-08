@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Spline from "@splinetool/react-spline";
 import NavBar from "./components/NavBar";
+import Footer from "./components/Footer";
 import LoadingScreen from "./pages/LoadingScreen";
 import "./App.css";
 
@@ -108,6 +109,7 @@ export default function App() {
       {isLoading && <LoadingScreen />}
       {/* Navbar must be OUTSIDE the spline layer so it can sit above it */}
       <NavBar />
+      <Footer />
 
       {/* Spline stays fixed and slides up as you scroll */}
       <div ref={layerRef} className="splineLayer">

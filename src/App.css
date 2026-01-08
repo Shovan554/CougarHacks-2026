@@ -186,6 +186,10 @@ body {
   margin: 0 0 30px 0;
   font-weight: bold;
 }
+
+.pageSection:last-of-type {
+  padding-bottom: 80px;
+}
 .splineLayer,
 .splineFixed {
   touch-action: pan-y; /* allows vertical scrolling on mobile */
