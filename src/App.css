@@ -41,7 +41,7 @@
 
 /* your zoom class (tweak if you want) */
 .splineZoom > * {
-  transform: scale(1.8);
+  transform: scale(1.9);
   transform-origin: center;
   width: 100% !important;
   height: 100% !important;
@@ -88,7 +88,7 @@ body {
 
 .registerBtn {
   position: absolute;
-  top: 630px;
+  top: 670px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
@@ -131,6 +131,14 @@ body {
   to {
     transform: translateX(-50%) translateY(0);
     opacity: 1;
+  }
+}
+
+@media (max-width: 400px) {
+  .registerBtn {
+    top: 550px;
+    padding: 12px 24px;
+    font-size: 0.9rem;
   }
 }
 
