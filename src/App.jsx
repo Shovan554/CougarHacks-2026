@@ -3,6 +3,10 @@ import Spline from "@splinetool/react-spline";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import LoadingScreen from "./pages/LoadingScreen";
+import AboutSection from "./pages/AboutSection";
+import ThemesSection from "./pages/ThemesSection";
+import SponsorsSection from "./pages/SponsorsSection";
+import FAQSection from "./pages/FAQSection";
 import "./App.css";
 
 export default function App() {
@@ -14,7 +18,7 @@ export default function App() {
     // 3 second loading screen
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 3000);
 
     // 2 second delay before starting Spline to make "look at" smoother
     const splineTimer = setTimeout(() => {
@@ -36,7 +40,7 @@ export default function App() {
         clientX: x,
         clientY: y,
         bubbles: true,
-      })
+      }),
     );
   };
 
@@ -129,29 +133,14 @@ export default function App() {
       {/* This creates the first "screen" height so you can scroll */}
       <div className="spacer" />
 
-      {/* About Section */}
-      <section id="about" className="pageSection">
-        <div className="contentWrap">
-          <h1>About</h1>
-          <p></p>
-        </div>
-      </section>
+      {/* About Section with 3D Model */}
+      <AboutSection />
 
       {/* Themes Section */}
-      <section id="themes" className="pageSection">
-        <div className="contentWrap">
-          <h1>Themes</h1>
-          <p></p>
-        </div>
-      </section>
+      <ThemesSection />
 
       {/* Sponsors Section */}
-      <section id="sponsors" className="pageSection">
-        <div className="contentWrap">
-          <h1>Sponsors</h1>
-          <p></p>
-        </div>
-      </section>
+      <SponsorsSection />
 
       {/* Team Section */}
       <section id="team" className="pageSection">
@@ -162,12 +151,7 @@ export default function App() {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="pageSection">
-        <div className="contentWrap">
-          <h1>FAQ</h1>
-          <p></p>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Itinerary Section */}
       <section id="itinerary" className="pageSection">
@@ -177,13 +161,7 @@ export default function App() {
         </div>
       </section>
 
-      {/* Sponsor Link Section */}
-      <section id="sponsor" className="pageSection">
-        <div className="contentWrap">
-          <h1>Become a Sponsor</h1>
-          <p></p>
-        </div>
-      </section>
+     
     </div>
   );
 }

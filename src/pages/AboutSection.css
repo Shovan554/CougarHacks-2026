@@ -1,0 +1,130 @@
+.aboutSection {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.aboutTitle {
+  font-size: 3.5rem;
+  margin: 40px 0 30px 24px;
+  font-weight: bold;
+  color: #ffffff;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #CD1414;
+  width: fit-content;
+}
+
+.aboutContainer {
+  display: flex;
+  gap: 40px;
+  flex-grow: 1;
+  padding: 0 24px 40px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.aboutTextContent {
+  flex: 1;
+  min-width: 0;
+  background: #ffffff;
+  border: 3px solid #CD1414;
+  border-radius: 12px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.aboutTextContent p {
+  color: #CD1414;
+  font-size: 18px;
+  line-height: 1.8;
+  margin: 0 0 18px 0;
+  font-weight: 500;
+}
+
+.aboutTextContent p:last-child {
+  margin-bottom: 0;
+}
+
+.aboutAnimationContainer {
+  flex: 1;
+  min-width: 0;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutAnimation {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 1250px) {
+  .aboutTitle {
+    font-size: 2.8rem;
+  }
+
+  .aboutContainer {
+    gap: 30px;
+    padding: 0 20px 30px 20px;
+  }
+
+  .aboutTextContent p {
+    font-size: 16px;
+  }
+
+  .aboutAnimationContainer {
+    height: 350px;
+  }
+}
+
+@media (max-width: 768px) {
+  .aboutTitle {
+    font-size: 2.2rem;
+    padding: 30px 20px 20px 20px;
+  }
+
+  .aboutContainer {
+    flex-direction: column;
+    gap: 20px;
+    padding: 0 20px 30px 20px;
+  }
+
+  .aboutTextContent p {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  .aboutAnimationContainer {
+    height: 300px;
+    width: 100%;
+  }
+}
+
+@media (max-width: 600px) {
+  .aboutTitle {
+    font-size: 1.8rem;
+    padding: 20px 16px 15px 16px;
+  }
+
+  .aboutContainer {
+    gap: 15px;
+    padding: 0 16px 20px 16px;
+  }
+
+  .aboutTextContent p {
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 14px;
+  }
+
+  .aboutAnimationContainer {
+    height: 250px;
+  }
+}

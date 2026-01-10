@@ -1,0 +1,98 @@
+.sponsorsSection {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sponsorsTitle {
+  font-size: 3.5rem;
+  margin: 40px 0 0 24px;
+  font-weight: bold;
+  color: #ffffff;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #CD1414;
+  width: fit-content;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.sponsorsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  width: 100%;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.becomeSponsorBtn {
+  background-color: #CD1414;
+  color: white;
+  padding: 18px 48px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  
+  /* 3D effect */
+  box-shadow: 0 6px 0 #8B0E0E;
+  transition: all 0.1s ease;
+}
+
+.becomeSponsorBtn:hover {
+  background-color: #e31616;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 0 #8B0E0E;
+}
+
+.becomeSponsorBtn:active {
+  box-shadow: 0 2px 0 #8B0E0E;
+  transform: translateY(4px);
+}
+
+@media (max-width: 1250px) {
+  .sponsorsTitle {
+    font-size: 2.8rem;
+  }
+
+  .becomeSponsorBtn {
+    padding: 16px 40px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .sponsorsTitle {
+    font-size: 2.2rem;
+  }
+
+  .becomeSponsorBtn {
+    padding: 14px 36px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .sponsorsTitle {
+    font-size: 1.8rem;
+  }
+
+  .sponsorsContainer {
+    padding: 0 16px;
+  }
+
+  .becomeSponsorBtn {
+    padding: 12px 32px;
+    font-size: 0.95rem;
+  }
+}
