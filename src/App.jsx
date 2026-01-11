@@ -7,6 +7,7 @@ import AboutSection from "./pages/AboutSection";
 import ThemesSection from "./pages/ThemesSection";
 import SponsorsSection from "./pages/SponsorsSection";
 import FAQSection from "./pages/FAQSection";
+import ItinerarySection from "./pages/ItinerarySection";
 import "./App.css";
 
 export default function App() {
@@ -154,12 +155,7 @@ export default function App() {
       <FAQSection />
 
       {/* Itinerary Section */}
-      <section id="itinerary" className="pageSection">
-        <div className="contentWrap">
-          <h1>Itinerary</h1>
-          <p></p>
-        </div>
-      </section>
+      <ItinerarySection />
 
      
     </div>

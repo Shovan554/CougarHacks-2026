@@ -8,7 +8,7 @@ const LINKS = [
   { label: "Sponsors", href: "#sponsors", target: 3 },
   { label: "Team", href: "#team", target: 4 },
   { label: "FAQ", href: "#faq", target: 5 },
-   {label: "Itenerary", href: "#itinerary", target: 6 },
+   {label: "Itinerary", href: "#itinerary", target: 6 },
 ];
 
 export default function NavBar({ onNavigate }) {

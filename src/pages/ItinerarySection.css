@@ -1,0 +1,298 @@
+.itinerarySection {
+  position: relative;
+  min-height: 100vh;
+  background: #000;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+}
+
+.itineraryTitle {
+  font-size: 3.5rem;
+  margin: 40px 0 30px 24px;
+  font-weight: bold;
+  color: #ffffff;
+  padding-bottom: 15px;
+  border-bottom: 3px solid #CD1414;
+  width: fit-content;
+}
+
+.itineraryContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  flex-grow: 1;
+  padding: 0 24px 40px 24px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.dayTabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.dayTab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 12px 20px;
+  background: #ffffff;
+  border: 2px solid #CD1414;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.dayTab:hover {
+  background: #f5f5f5;
+}
+
+.dayTab.active {
+  background: #CD1414;
+  color: #ffffff;
+}
+
+.dayTab .dayName {
+  font-weight: 600;
+  font-size: 15px;
+  color: inherit;
+}
+
+.dayTab .dayDate {
+  font-weight: 400;
+  font-size: 12px;
+  color: inherit;
+  opacity: 0.8;
+}
+
+.dayTab.active .dayName,
+.dayTab.active .dayDate {
+  color: #ffffff;
+}
+
+.dayTab:not(.active) .dayName {
+  color: #CD1414;
+}
+
+.dayTab:not(.active) .dayDate {
+  color: #CD1414;
+  opacity: 0.7;
+}
+
+.dayCalendarContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.calendarDate {
+  font-size: 1.8rem;
+  margin: 0;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.dayCalendar {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  background: #ffffff;
+  border: 3px solid #CD1414;
+  border-radius: 12px;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.timeSlot {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 20px;
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: flex-start;
+}
+
+.timeSlot:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.timeLabel {
+  font-weight: 700;
+  font-size: 16px;
+  color: #CD1414;
+  min-width: 120px;
+}
+
+.timeContent {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.event {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.event h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #000;
+}
+
+.event p {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.4;
+}
+
+@media (max-width: 1250px) {
+  .itineraryTitle {
+    font-size: 2.8rem;
+  }
+
+  .dayCalendar {
+    padding: 20px;
+  }
+
+  .timeSlot {
+    gap: 16px;
+    padding: 14px;
+  }
+
+  .timeLabel {
+    font-size: 14px;
+  }
+
+  .event h4 {
+    font-size: 15px;
+  }
+
+  .event p {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .itineraryTitle {
+    font-size: 2.2rem;
+    margin: 30px 0 20px 0;
+    padding: 0 20px 15px 20px;
+  }
+
+  .itineraryContainer {
+    gap: 20px;
+    padding: 0 20px 30px 20px;
+  }
+
+  .dayTabs {
+    gap: 10px;
+  }
+
+  .dayTab {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+
+  .dayTab .dayName {
+    font-size: 14px;
+  }
+
+  .dayTab .dayDate {
+    font-size: 11px;
+  }
+
+  .dayCalendar {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .timeSlot {
+    gap: 12px;
+    padding: 12px;
+    grid-template-columns: 100px 1fr;
+  }
+
+  .timeLabel {
+    font-size: 13px;
+    min-width: 100px;
+  }
+
+  .event h4 {
+    font-size: 14px;
+  }
+
+  .event p {
+    font-size: 12px;
+  }
+
+  .calendarDate {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .itineraryTitle {
+    font-size: 1.8rem;
+    margin: 20px 0 0 16px;
+  }
+
+  .itineraryContainer {
+    gap: 15px;
+    padding: 0 16px 20px 16px;
+  }
+
+  .dayTabs {
+    gap: 8px;
+  }
+
+  .dayTab {
+    padding: 8px 12px;
+    font-size: 12px;
+  }
+
+  .dayTab .dayName {
+    font-size: 12px;
+  }
+
+  .dayTab .dayDate {
+    font-size: 10px;
+  }
+
+  .dayCalendar {
+    padding: 12px;
+    gap: 8px;
+  }
+
+  .timeSlot {
+    gap: 10px;
+    padding: 10px;
+    grid-template-columns: 80px 1fr;
+  }
+
+  .timeLabel {
+    font-size: 12px;
+    min-width: 80px;
+  }
+
+  .event h4 {
+    font-size: 13px;
+  }
+
+  .event p {
+    font-size: 11px;
+  }
+
+  .calendarDate {
+    font-size: 1.2rem;
+  }
+}
