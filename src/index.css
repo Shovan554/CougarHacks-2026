@@ -74,4 +74,11 @@ button:focus-visible {
   font-display: swap;
 }
 
+@font-face {
+  font-family: "LogoFont";
+  src: url("./assets/fonts/logoFont.ttf") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
 

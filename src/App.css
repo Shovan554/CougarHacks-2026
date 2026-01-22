@@ -52,23 +52,13 @@
 
 /* your zoom class (tweak if you want) */
 .splineZoom > * {
-  transform: scale(2.1);
+  transform: scale(1.0);
   transform-origin: center;
   width: 100% !important;
   height: 100% !important;
 }
 
-@media (max-width: 1250px) {
-  .splineZoom > * {
-    transform: scale(1.4);
-  }
-}
 
-@media (max-width: 700px) {
-  .splineZoom > * {
-    transform: scale(1.0);
-  }
-}
 html, body, #root {
   width: 100%;
   min-height: 100%;
@@ -97,26 +87,53 @@ body {
   pointer-events: auto; /* enabled on first screen */
 }
 
+.heroLogo {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(calc(-50% - 100px), -50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  z-index: 5;
+  font-family: "LogoFont", sans-serif;
+  color: #fff;
+  text-align: center;
+  pointer-events: none;
+  text-transform: uppercase;
+}
+
+.logoCougar {
+  color: #CD1414;
+}
+
+.logoCougar, .logoHacks {
+  font-size: 8rem;
+  line-height: 0.8;
+  letter-spacing: 2px;
+}
+
 .registerBtn {
   position: absolute;
-  top: 690px;
+  top: 520px;
   left: 50%;
   transform: translateX(-50%);
   z-index: 20;
   
   background-color: #CD1414;
   color: white;
-  padding: 16px 32px;
-  font-size: 1.1rem;
+  padding: 20px 48px;
+  font-size: 1.4rem;
   font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
   border: none;
   border-radius: 12px;
   cursor: pointer;
   
   /* 3D effect */
-  box-shadow: 0 6px 0 #8B0E0E;
+  box-shadow: 0 8px 0 #8B0E0E;
   transition: all 0.1s ease;
   
   /* Animation */
@@ -126,11 +143,11 @@ body {
 .registerBtn:hover {
   background-color: #e31616;
   transform: translateX(-50%) translateY(-2px);
-  box-shadow: 0 8px 0 #8B0E0E;
+  box-shadow: 0 10px 0 #8B0E0E;
 }
 
 .registerBtn:active {
-  box-shadow: 0 2px 0 #8B0E0E;
+  box-shadow: 0 3px 0 #8B0E0E;
   transform: translateX(-50%) translateY(4px);
 }
 
@@ -147,9 +164,16 @@ body {
 
 @media (max-width: 400px) {
   .registerBtn {
-    top: 850px;
+    top: 400px;
     padding: 12px 24px;
     font-size: 0.9rem;
+  }
+  .logoCougar, .logoHacks {
+    font-size: 3.5rem;
+  }
+  .heroLogo {
+    transform: translate(-50%, -50%);
+    top: 35%;
   }
 }
 
@@ -201,4 +225,42 @@ body {
 }
 .splineLayer {
   touch-action: pan-y; /* allows normal vertical scrolling on phones */
+}
+
+@media (max-width: 1200px) {
+  .splineZoom > * {
+    transform: scale(0.99);
+  }
+  .logoCougar, .logoHacks {
+    font-size: 3.5rem;
+  }
+  .heroLogo {
+    transform: translate(calc(-50% - 40px), -50%);
+  }
+}
+
+@media (max-width: 1100px) {
+  .logoCougar, .logoHacks {
+    font-size: 4.3rem;
+  }
+  .heroLogo {
+    transform: translate(calc(-50% - 20px), -50%);
+  }
+}
+
+@media (max-width: 400px) {
+  
+  .logoCougar, .logoHacks {
+    font-size: 3.5rem;
+  }
+  .heroLogo {
+    transform: translate(-50%, -50%);
+    top: 35%;
+  }
+}
+
+@media (max-width: 375px) {
+  .splineZoom > * {
+    transform: scale(0.8);
+  }
 }

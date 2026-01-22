@@ -19,7 +19,7 @@ export default function App() {
     // 3 second loading screen
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 5000);
 
     // 2 second delay before starting Spline to make "look at" smoother
     const splineTimer = setTimeout(() => {
@@ -122,12 +122,16 @@ export default function App() {
           {shouldRenderSpline && (
             <div className="spline-content">
               <Spline
-                scene="https://prod.spline.design/vBRDJw-I4bvaLp3u/scene.splinecode"
+                scene="https://prod.spline.design/L27v4BR0JwMKXtM3/scene.splinecode"
                 onLoad={onSplineLoad}
               />
             </div>
           )}
         </main>
+        <div className="heroLogo">
+          <span className="logoCougar">COUGAR</span>
+          <span className="logoHacks">HACKS</span>
+        </div>
         <button className="registerBtn">Register Now</button>
       </div>
 
