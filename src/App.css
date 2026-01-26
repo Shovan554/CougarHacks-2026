@@ -114,13 +114,33 @@ body {
   letter-spacing: 2px;
 }
 
-.registerBtn {
+.logoDate {
+  font-size: 2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+}
+
+.heroDate {
+  font-family: "LogoFont", sans-serif;
+  color: #fff;
+  text-align: center;
+  pointer-events: none;
+  margin-bottom: 20px;
+}
+
+.heroContent {
   position: absolute;
-  top: 520px;
+  top: 60%;
   left: 50%;
   transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   z-index: 20;
-  
+}
+
+.registerBtn {
+  position: relative;
   background-color: #CD1414;
   color: white;
   padding: 20px 48px;
@@ -142,29 +162,28 @@ body {
 
 .registerBtn:hover {
   background-color: #e31616;
-  transform: translateX(-50%) translateY(-2px);
+  transform: translateY(-2px);
   box-shadow: 0 10px 0 #8B0E0E;
 }
 
 .registerBtn:active {
   box-shadow: 0 3px 0 #8B0E0E;
-  transform: translateX(-50%) translateY(4px);
+  transform: translateY(4px);
 }
 
 @keyframes slideUp {
   from {
-    transform: translateX(-50%) translateY(200px);
+    transform: translateY(200px);
     opacity: 0;
   }
   to {
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
     opacity: 1;
   }
 }
 
 @media (max-width: 400px) {
   .registerBtn {
-    top: 400px;
     padding: 12px 24px;
     font-size: 0.9rem;
   }
@@ -234,6 +253,12 @@ body {
   .logoCougar, .logoHacks {
     font-size: 3.5rem;
   }
+  .logoDate {
+    font-size: 1.2rem;
+  }
+  .heroContent {
+    top: 55%;
+  }
   .heroLogo {
     transform: translate(calc(-50% - 40px), -50%);
   }
@@ -243,15 +268,30 @@ body {
   .logoCougar, .logoHacks {
     font-size: 4.3rem;
   }
+  .logoDate {
+    font-size: 1.4rem;
+  }
+  .heroContent {
+    top: 60%;
+  }
   .heroLogo {
     transform: translate(calc(-50% - 20px), -50%);
   }
 }
 
 @media (max-width: 400px) {
-  
+  .registerBtn {
+    padding: 12px 24px;
+    font-size: 0.9rem;
+  }
   .logoCougar, .logoHacks {
     font-size: 3.5rem;
+  }
+  .logoDate {
+    font-size: 1rem;
+  }
+  .heroContent {
+    top: 48%;
   }
   .heroLogo {
     transform: translate(-50%, -50%);

@@ -132,7 +132,12 @@ export default function App() {
           <span className="logoCougar">COUGAR</span>
           <span className="logoHacks">HACKS</span>
         </div>
-        <button className="registerBtn">Register Now</button>
+        <div className="heroContent">
+          <div className="heroDate">
+            <span className="logoDate">25.04.2026 - 26.04.2026</span>
+          </div>
+          <button className="registerBtn">Register Now</button>
+        </div>
       </div>
 
       {/* This creates the first "screen" height so you can scroll */}
