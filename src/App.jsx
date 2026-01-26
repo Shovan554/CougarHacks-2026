@@ -134,7 +134,7 @@ export default function App() {
         </div>
         <div className="heroContent">
           <div className="heroDate">
-            <span className="logoDate">25.04.2026 - 26.04.2026</span>
+            <span className="logoDate"> 2026 April 25-26 </span>
           </div>
           <button className="registerBtn">Register Now</button>
         </div>
