@@ -173,7 +173,7 @@ export default function FAQSection() {
                   flex-shrink-0
                   px-5 py-3
                   border-2 border-brand rounded-lg
-                  font-logo font-bold uppercase text-sm tracking-wide
+                  font-content font-bold uppercase text-sm tracking-wide
                   transition-all duration-200
                   ${isActive ? "bg-brand text-white" : "bg-white text-brand hover:bg-[#f5f5f5]"}
                 `}
@@ -191,7 +191,7 @@ export default function FAQSection() {
 
               <button
                 onClick={() => toggleExpand(item.id)}
-                className="w-full p-4 flex justify-between items-center text-lg font-semibold text-brand text-left hover:bg-gray-100 transition"
+                className="w-full p-4 flex justify-between items-center text-lg font-content font-semibold text-brand text-left hover:bg-gray-100 transition"
               >
                 {item.question}
 
@@ -202,7 +202,7 @@ export default function FAQSection() {
 
               {expandedId === item.id && (
                 <div className="px-4 pb-4 border-t border-brand">
-                  <p className="text-base text-brand mt-3">{item.answer}</p>
+                  <p className="text-base font-content text-brand mt-3">{item.answer}</p>
                 </div>
               )}
             </div>

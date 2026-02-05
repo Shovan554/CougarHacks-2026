@@ -3,6 +3,7 @@
 @theme {
   --font-cougar: "CougarFont", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   --font-logo: "LogoFont", sans-serif;
+  --font-content: "ContentFont", sans-serif;
   --color-brand: #CD1414;
   --color-brand-dark: #8B0E0E;
 }
@@ -19,6 +20,13 @@
   @font-face {
     font-family: "LogoFont";
     src: url("./assets/fonts/logoFont.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  @font-face {
+    font-family: "ContentFont";
+    src: url("./assets/fonts/contentFont.ttf") format("truetype");
     font-weight: normal;
     font-style: normal;
   }

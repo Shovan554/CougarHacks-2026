@@ -33,7 +33,11 @@ export default function ItinerarySection() {
   }, [currentData.events]);
 
   return (
-    <section id="itinerary" className="relative min-h-screen bg-gradient-to-b from-[#02040A] via-[#12060A] to-[#2A0A10] z-[100] flex flex-col">
+    <section
+  id="itinerary"
+  className="relative min-h-screen bg-gradient-to-b from-[#02040A] via-[#12060A] to-[#2A0A10] z-[100] flex flex-col pb-32"
+>
+
       <h1 className="text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit mb-[30px] uppercase">
         Itinerary
       </h1>
@@ -53,8 +57,8 @@ export default function ItinerarySection() {
                 }`}
                 onClick={() => setSelectedDay(dayKey)}
               >
-                <span className="font-semibold text-[15px] sm:text-[18px]">{data.dayName}</span>
-                <span className={`font-normal text-[13px] sm:text-[15px] ${isActive ? "text-white" : "text-brand opacity-70"}`}>
+                <span className="font-content font-semibold text-[15px] sm:text-[18px]">{data.dayName}</span>
+                <span className={`font-content font-normal text-[13px] sm:text-[15px] ${isActive ? "text-white" : "text-brand opacity-70"}`}>
                   {dayKey === "saturday" && "Apr 25"}
                   {dayKey === "sunday" && "Apr 26"}
                 </span>
@@ -65,7 +69,7 @@ export default function ItinerarySection() {
 
         {/* Day Schedule */}
         <div className="flex flex-col gap-5">
-          <h2 className="text-white text-[23px] sm:text-[calc(1.4rem+3px)] md:text-[calc(1.8rem+3px)] font-semibold m-0">
+          <h2 className="text-white text-[23px] sm:text-[calc(1.4rem+3px)] md:text-[calc(1.8rem+3px)] font-content font-semibold m-0">
             {currentData.date}
           </h2>
 
@@ -76,16 +80,16 @@ export default function ItinerarySection() {
                 className="grid grid-cols-[90px_1fr] sm:grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] gap-[10px] sm:gap-5 p-[10px] sm:p-4 border-b border-[#f0f0f0] last:border-none last:pb-0 items-start"
               >
                 {/* Time */}
-                <div className="font-bold text-[15px] sm:text-[17px] md:text-[19px] text-brand min-w-[90px] sm:min-w-[110px] md:min-w-[140px] whitespace-nowrap">
+                <div className="font-content font-bold text-[15px] sm:text-[17px] md:text-[19px] text-brand min-w-[90px] sm:min-w-[110px] md:min-w-[140px] whitespace-nowrap">
                   {event.time}
                 </div>
 
                 {/* Event */}
                 <div className="flex flex-col gap-1.5">
-                  <h4 className="m-0 text-[16px] sm:text-[17px] md:text-[19px] font-semibold text-black">
+                  <h4 className="m-0 text-[16px] sm:text-[17px] md:text-[19px] font-content font-semibold text-black">
                     {event.title}
                   </h4>
-                  <p className="m-0 text-[14px] sm:text-[15px] md:text-[17px] text-[#666] leading-[1.4]">
+                  <p className="m-0 text-[14px] sm:text-[15px] md:text-[17px] font-content text-[#666] leading-[1.4]">
                     {event.description}
                   </p>
                 </div>
@@ -93,13 +97,27 @@ export default function ItinerarySection() {
             ))}
 
             {sortedEvents.length === 0 && (
-              <p className="text-brand font-semibold text-center py-8">
+              <p className="text-brand font-content font-semibold text-center py-8">
                 Schedule coming soon.
               </p>
             )}
           </div>
         </div>
       </div>
+
+      {/* Credit */}
+      <div className="w-full flex justify-center pb-8 ">
+
+        <a 
+          href="https://shovanraut.vercel.app" 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="text-white/50 hover:text-brand transition-colors duration-200 font-logo text-xs sm:text-sm no-underline"
+        >
+          Website by Shovan Raut
+        </a>
+      </div>
+
     </section>
   );
 }

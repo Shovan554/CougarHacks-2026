@@ -128,7 +128,7 @@ export default function App() {
                 <span className="text-brand text-[3.2rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
                   COUGAR
                 </span>
-                <span className="text-black text-[3.2rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
+                <span className="text-black text-[3.2rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px] z-[30]">
                   HACKS
                 </span>
               </div>
