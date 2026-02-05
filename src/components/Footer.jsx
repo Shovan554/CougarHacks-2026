@@ -1,16 +1,14 @@
-import "./Footer.css";
-
 export default function Footer() {
   return (
-    <footer className="footer">
-      <div className="footerContent">
-        <div className="instagramSection">
-          <span className="followText">Follow us on Instagram</span>
+    <footer className="fixed bottom-0 left-0 w-full bg-black/25 backdrop-blur-lg border-t border-white/10 z-50 pointer-events-auto">
+      <div className="flex justify-between items-center w-full px-[18px] py-3 sm:px-6 sm:py-4 box-border">
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="text-white text-xs sm:text-sm">Follow us on Instagram</span>
           <a 
             href="https://www.instagram.com/cougarhacks_/" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="instagramLink"
+            className="inline-flex items-center justify-center text-white no-underline transition-all duration-180 p-1.5 sm:p-2 sm:px-3 rounded-lg hover:text-brand hover:scale-110"
             aria-label="Instagram"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
@@ -23,7 +21,7 @@ export default function Footer() {
           href="https://shovanraut.vercel.app/" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="developedByLink"
+          className="text-white no-underline text-xs sm:text-sm transition-colors duration-180 p-1.5 sm:p-2 sm:px-3 rounded-lg hover:text-brand"
         >
           Developed by Shovan Raut
         </a>

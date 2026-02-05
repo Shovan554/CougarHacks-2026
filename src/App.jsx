@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import Spline from "@splinetool/react-spline";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import LoadingScreen from "./pages/LoadingScreen";
@@ -8,44 +7,44 @@ import ThemesSection from "./pages/ThemesSection";
 import SponsorsSection from "./pages/SponsorsSection";
 import FAQSection from "./pages/FAQSection";
 import ItinerarySection from "./pages/ItinerarySection";
-import "./App.css";
+
+import mountainsFront from "./assets/images/mountains_front.png";
+import cloud from "./assets/images/cloud.jpg";
+import logo from "./assets/images/logo.png";
 
 export default function App() {
   const layerRef = useRef(null);
+  const bgRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
-  const [shouldRenderSpline, setShouldRenderSpline] = useState(false);
 
+  /* ---------------- Mouse Parallax ---------------- */
   useEffect(() => {
-    // 3 second loading screen
+    const handleMouseMove = (e) => {
+      if (!bgRef.current) return;
+
+      const { clientX, clientY } = e;
+      const { innerWidth, innerHeight } = window;
+
+      const moveX = (clientX / innerWidth - 0.5) * 20;
+      const moveY = (clientY / innerHeight - 0.5) * 20;
+
+      bgRef.current.style.transform = `translate3d(${-moveX}px, ${-moveY}px, 0) scale(1.1)`;
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, []);
+
+  /* ---------------- Loading Screen ---------------- */
+  useEffect(() => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
     }, 5000);
 
-    // 2 second delay before starting Spline to make "look at" smoother
-    const splineTimer = setTimeout(() => {
-      setShouldRenderSpline(true);
-    }, 0);
-
-    return () => {
-      clearTimeout(loadingTimer);
-      clearTimeout(splineTimer);
-    };
+    return () => clearTimeout(loadingTimer);
   }, []);
 
-  const onSplineLoad = () => {
-    // Dispatch a mousemove event to the center of the screen so Spline's "Look At" starts centered
-    const x = window.innerWidth / 2;
-    const y = window.innerHeight / 2;
-    window.dispatchEvent(
-      new MouseEvent("mousemove", {
-        clientX: x,
-        clientY: y,
-        bubbles: true,
-      }),
-    );
-  };
-
-  // 1) Slide the whole Spline layer up as the user scrolls down 1 screen
+  /* ---------------- Scroll Animation ---------------- */
   useEffect(() => {
     const layer = layerRef.current;
     if (!layer) return;
@@ -55,12 +54,25 @@ export default function App() {
     const update = () => {
       const h = window.innerHeight || 1;
       const p = Math.min(1, Math.max(0, window.scrollY / h)); // 0..1
-      const y = -p * h;
 
-      layer.style.setProperty("--slideY", `${y}px`);
+      const scale = 1 - p * 0.05;
+      layer.style.transform = `scale(${scale})`;
 
-      // After first screen, turn off pointer events so you can interact with content below
-      layer.style.pointerEvents = p >= 1 ? "none" : "auto";
+      // Fade entire hero
+      layer.style.opacity = String(1 - p);
+
+      // Move the front mountain up faster as we scroll
+      const frontY = -p * h * 0.8;
+      layer.style.setProperty("--frontY", `${frontY}px`);
+
+      // When past the first screen, remove hero completely
+      if (p >= 1) {
+        layer.style.pointerEvents = "none";
+        layer.style.visibility = "hidden";
+      } else {
+        layer.style.pointerEvents = "auto";
+        layer.style.visibility = "visible";
+      }
     };
 
     const onScroll = () => {
@@ -82,91 +94,82 @@ export default function App() {
     };
   }, []);
 
-  // 2) Stop Spline from hijacking wheel scrolling, but still let the PAGE scroll
-  // We do that by preventing default on the wheel *inside the spline layer* and manually scrolling the window.
-  useEffect(() => {
-    const layer = layerRef.current;
-    if (!layer) return;
-
-    const forwardWheelToPage = (e) => {
-      // only when the wheel happens over the spline layer
-      if (!layer.contains(e.target)) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-      e.stopImmediatePropagation?.();
-
-      window.scrollBy({ top: e.deltaY, left: 0, behavior: "auto" });
-    };
-
-    layer.addEventListener("wheel", forwardWheelToPage, {
-      passive: false,
-      capture: true,
-    });
-
-    return () => {
-      layer.removeEventListener("wheel", forwardWheelToPage, { capture: true });
-    };
-  }, []);
-
   return (
-    <div className="page">
+    <div className="relative">
       {isLoading && <LoadingScreen />}
-      {/* Navbar must be OUTSIDE the spline layer so it can sit above it */}
       <NavBar />
       <Footer />
 
-      {/* Spline stays fixed and slides up as you scroll */}
-      <div ref={layerRef} className="splineLayer">
-        <main className="splineFixed splineZoom">
-          {shouldRenderSpline && (
-            <div className="spline-content">
-              <Spline
-                scene="https://prod.spline.design/L27v4BR0JwMKXtM3/scene.splinecode"
-                onLoad={onSplineLoad}
+      {/* Hero Layer */}
+      <div
+        ref={layerRef}
+        className="fixed inset-0 z-30 overflow-hidden will-change-transform touch-pan-y pointer-events-auto"
+      >
+        {/* Shared stacking context */}
+        <div className="relative w-full h-full">
+          {/* Background Cloud */}
+          <img
+            ref={bgRef}
+            src={cloud}
+            alt="Background Cloud"
+            className="absolute inset-0 w-full h-full object-cover z-0"
+          />
+
+          {/* ✅ MID LAYER: Title + Logo BEHIND the mountains */}
+          <div className="absolute inset-0 z-[10]">
+            <div className="absolute top-[40%] lg:top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-row items-center gap-8 font-logo text-black uppercase">
+              <div className="flex flex-col items-center">
+                <span className="text-brand text-[3.5rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
+                  COUGAR
+                </span>
+                <span className="text-black text-[3.5rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
+                  HACKS
+                </span>
+              </div>
+
+              <img
+                src={logo}
+                alt="CougarHacks Logo"
+                className="relative -left-4 sm:-left-6 lg:-left-25 w-[120px] sm:w-[280px] lg:w-[450px] h-auto object-contain"
               />
             </div>
-          )}
-        </main>
-        <div className="heroLogo">
-          <span className="logoCougar">COUGAR</span>
-          <span className="logoHacks">HACKS</span>
-        </div>
-        <div className="heroContent">
-          <div className="heroDate">
-            <span className="logoDate"> 2026 April 25-26 </span>
           </div>
-          <button className="registerBtn">Register Now</button>
+
+          {/* ✅ FRONT MOUNTAINS: Above title/logo */}
+          <img
+            src={mountainsFront}
+            alt="Mountains Front"
+            className="absolute bottom-[-150px] left-0 w-full h-auto z-[20] will-change-transform pointer-events-none"
+            style={{ transform: `translate3d(0, var(--frontY, 0px), 0)` }}
+          />
+
+          {/* ✅ TOP LAYER: Date + Button IN FRONT of mountains */}
+          <div className="absolute inset-0 z-[30]">
+            <div className="absolute top-[55%] sm:top-[55%] left-1/2 -translate-x-1/2 flex flex-col items-center">
+              <div className="font-logo text-black text-center pointer-events-none mb-5">
+                <span className="whitespace-nowrap text-[0.9rem] sm:text-[1.4rem] lg:text-[5rem] font-medium tracking-[1px]">
+                    2026 April 25-26
+                </span>
+
+              </div>
+
+              <button className="relative bg-brand hover:bg-[#e31616] active:translate-y-1 text-white px-6 py-3 sm:px-12 sm:py-5 text-[0.9rem] sm:text-[1.4rem] font-extrabold uppercase tracking-[1.5px] rounded-xl cursor-pointer shadow-[0_8px_0_var(--color-brand-dark)] hover:shadow-[0_10px_0_var(--color-brand-dark)] active:shadow-[0_3px_0_var(--color-brand-dark)] transition-all duration-100 slide-up">
+                Register Now
+              </button>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* This creates the first "screen" height so you can scroll */}
-      <div className="spacer" />
+      {/* Spacer */}
+      <div className="h-screen pointer-events-none" />
 
-      {/* About Section with 3D Model */}
+      {/* Sections */}
       <AboutSection />
-
-      {/* Themes Section */}
       <ThemesSection />
-
-      {/* Sponsors Section */}
       <SponsorsSection />
-
-      {/* Team Section */}
-      <section id="team" className="pageSection">
-        <div className="contentWrap">
-          <h1>Team</h1>
-          <p></p>
-        </div>
-      </section>
-
-      {/* FAQ Section */}
       <FAQSection />
-
-      {/* Itinerary Section */}
       <ItinerarySection />
-
-     
     </div>
   );
 }

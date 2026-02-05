@@ -1,52 +1,34 @@
 import { useState } from "react";
-import "./ItinerarySection.css";
 
 const ITINERARY_DATA = {
-  friday: {
-    date: "Friday, April 17",
-    dayName: "Friday",
-    startHour: 18,
-    endHour: 21,
-    events: [
-      { time: "6:00 PM", hour: 18, title: "Doors Open & Registration", description: "Check-in and get your badge" },
-      { time: "7:00 PM", hour: 19, title: "Opening Ceremony", description: "Welcome to CougarHacks 2.0!" },
-      { time: "8:00 PM", hour: 20, title: "Team Formation & Pitching", description: "Find your team and pitch ideas" },
-      { time: "9:00 PM", hour: 21, title: "Hacking Begins", description: "Start building your projects" },
-    ],
-  },
   saturday: {
-    date: "Saturday, April 18",
+    date: "Saturday, April 25",
     dayName: "Saturday",
-    startHour: 9,
-    endHour: 21,
+    startHour: 8,
+    endHour: 20,
     events: [
-      { time: "9:00 AM", hour: 9, title: "Breakfast", description: "Start your day with breakfast" },
-      { time: "10:00 AM", hour: 10, title: "Mentor Office Hours", description: "Get help from mentors" },
+      { time: "8:00 AM", hour: 8, title: "Event Starts", description: "Welcome to CougarHacks 2.0!" },
       { time: "12:00 PM", hour: 12, title: "Lunch", description: "Lunch break" },
-      { time: "1:00 PM", hour: 13, title: "Continue Building", description: "Keep hacking on your project" },
-      { time: "3:00 PM", hour: 15, title: "Tech Talks", description: "Learn from industry experts" },
-      { time: "5:00 PM", hour: 17, title: "Dinner", description: "Dinner time" },
-      { time: "9:00 PM", hour: 21, title: "Late Night Work Session", description: "Final push before judging" },
+      { time: "8:00 PM", hour: 20, title: "Dinner", description: "Dinner time" },
     ],
   },
   sunday: {
-    date: "Sunday, April 19",
+    date: "Sunday, April 26",
     dayName: "Sunday",
-    startHour: 9,
-    endHour: 19,
+    startHour: 8,
+    endHour: 17,
     events: [
-      { time: "9:00 AM", hour: 9, title: "Breakfast", description: "Final breakfast of the event" },
-      { time: "10:00 AM", hour: 10, title: "Final Push", description: "Last hours to finish your project" },
-      { time: "12:00 PM", hour: 12, title: "Submissions Deadline", description: "Submit your projects" },
-      { time: "1:00 PM", hour: 13, title: "Project Demos Begin", description: "See what everyone built" },
+      { time: "8:00 AM", hour: 8, title: "Breakfast", description: "Start your day with breakfast" },
+      { time: "12:00 PM", hour: 12, title: "Lunch", description: "Lunch break" },
+      { time: "3:00 PM", hour: 15, title: "Submissions", description: "Submit your projects" },
       { time: "4:00 PM", hour: 16, title: "Judging", description: "Teams pitch to judges" },
-      { time: "7:00 PM", hour: 19, title: "Awards & Closing Ceremony", description: "Celebrate the winners!" },
+      { time: "5:00 PM", hour: 17, title: "Final Round Judging", description: "Top teams compete for the grand prize" },
     ],
   },
 };
 
 export default function ItinerarySection() {
-  const [selectedDay, setSelectedDay] = useState("friday");
+  const [selectedDay, setSelectedDay] = useState("saturday");
   const currentData = ITINERARY_DATA[selectedDay];
 
   const generateHours = () => {
@@ -64,25 +46,27 @@ export default function ItinerarySection() {
   const hours = generateHours();
 
   return (
-    <section id="itinerary" className="itinerarySection">
-      <h1 className="itineraryTitle">Itinerary</h1>
+    <section id="itinerary" className="relative min-h-screen bg-black z-100 flex flex-col">
+      <h1 className="text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit mb-[30px] uppercase">
+        Itinerary
+      </h1>
 
-      <div className="itineraryContainer">
+      <div className="flex flex-col gap-[30px] grow px-4 md:px-5 lg:px-6 pb-10 max-w-[1400px] mx-auto w-full box-border">
         {/* Day Tabs */}
-        <div className="dayTabs">
+        <div className="flex gap-2 sm:gap-3 flex-wrap">
           {Object.keys(ITINERARY_DATA).map((dayKey) => {
             const data = ITINERARY_DATA[dayKey];
+            const isActive = selectedDay === dayKey;
             return (
               <button
                 key={dayKey}
-                className={`dayTab ${selectedDay === dayKey ? "active" : ""}`}
+                className={`flex flex-col items-center gap-1 p-2 sm:px-5 sm:py-3 border-2 border-brand rounded-lg cursor-pointer transition-all duration-200 ${isActive ? "bg-brand text-white" : "bg-white text-brand hover:bg-[#f5f5f5]"}`}
                 onClick={() => setSelectedDay(dayKey)}
               >
-                <span className="dayName">{data.dayName}</span>
-                <span className="dayDate">
-                  {dayKey === "friday" && "Apr 17"}
-                  {dayKey === "saturday" && "Apr 18"}
-                  {dayKey === "sunday" && "Apr 19"}
+                <span className="font-semibold text-xs sm:text-[15px]">{data.dayName}</span>
+                <span className={`font-normal text-[10px] sm:text-xs ${isActive ? "text-white" : "text-brand opacity-70"}`}>
+                  {dayKey === "saturday" && "Apr 25"}
+                  {dayKey === "sunday" && "Apr 26"}
                 </span>
               </button>
             );
@@ -90,24 +74,24 @@ export default function ItinerarySection() {
         </div>
 
         {/* Day Calendar */}
-        <div className="dayCalendarContainer">
-          <h2 className="calendarDate">{currentData.date}</h2>
-          <div className="dayCalendar">
+        <div className="flex flex-col gap-5">
+          <h2 className="text-white text-xl sm:text-[1.4rem] md:text-[1.8rem] font-semibold m-0">{currentData.date}</h2>
+          <div className="grid grid-cols-1 gap-2 sm:gap-4 bg-white border-[3px] border-brand rounded-xl p-3 sm:p-5 md:p-6 box-border">
             {hours.map((hour) => {
               const event = getEventForHour(hour);
               const ampm = hour < 12 ? "AM" : "PM";
               const displayHour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour;
 
               return (
-                <div key={hour} className="timeSlot">
-                  <div className="timeLabel">
+                <div key={hour} className="grid grid-cols-[80px_1fr] sm:grid-cols-[100px_1fr] md:grid-cols-[120px_1fr] gap-[10px] sm:gap-5 p-[10px] sm:p-4 border-b border-[#f0f0f0] last:border-none last:pb-0 items-start">
+                  <div className="font-bold text-xs sm:text-sm md:text-base text-brand min-w-[80px] sm:min-w-[100px] md:min-w-[120px]">
                     {displayHour}:00 {ampm}
                   </div>
-                  <div className="timeContent">
+                  <div className="flex flex-col gap-2">
                     {event && (
-                      <div className="event">
-                        <h4>{event.title}</h4>
-                        <p>{event.description}</p>
+                      <div className="flex flex-col gap-1.5">
+                        <h4 className="m-0 text-[13px] sm:text-sm md:text-base font-semibold text-black">{event.title}</h4>
+                        <p className="m-0 text-[11px] sm:text-xs md:text-sm text-[#666] leading-1.4">{event.description}</p>
                       </div>
                     )}
                   </div>

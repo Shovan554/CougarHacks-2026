@@ -1,5 +1,4 @@
 import { useLayoutEffect, useRef, useState } from "react";
-import "./NavBar.css";
 
 const LINKS = [
   { label: "Home", href: "#home", target: 0 },
@@ -8,7 +7,7 @@ const LINKS = [
   { label: "Sponsors", href: "#sponsors", target: 3 },
   { label: "Team", href: "#team", target: 4 },
   { label: "FAQ", href: "#faq", target: 5 },
-   {label: "Itinerary", href: "#itinerary", target: 6 },
+  { label: "Itinerary", href: "#itinerary", target: 6 },
 ];
 
 export default function NavBar({ onNavigate }) {
@@ -41,8 +40,8 @@ export default function NavBar({ onNavigate }) {
 
   useLayoutEffect(() => {
     const onResize = () => {
-      // close mobile menu if switching layouts
-      if (window.innerWidth >= 600) setIsOpen(false);
+      // ✅ close mobile menu if switching to desktop layout (>= 900px)
+      if (window.innerWidth >= 900) setIsOpen(false);
 
       // if pill is visible, re-measure
       if (pill.opacity === 1) measureTo(activeIndex, true);
@@ -75,27 +74,42 @@ export default function NavBar({ onNavigate }) {
   };
 
   return (
-    <nav className="navbar">
-      <div className="navbarInner">
-        {/* Mobile hamburger (only shown <600px via CSS) */}
+    <nav className="fixed top-5 left-0 w-full z-[1000] bg-transparent pointer-events-none">
+      <div className="w-full flex justify-center items-center gap-5 relative pointer-events-auto">
+        {/* ✅ Mobile hamburger (hidden on screens >= 900px) */}
         <button
-          className="hamburgerBtn"
+          className="min-[900px]:hidden fixed top-[18px] right-[18px] z-[1202] w-[52px] h-[52px] rounded-full border border-white/12 bg-black/35 backdrop-blur-lg flex items-center justify-center cursor-pointer pointer-events-auto"
           aria-label="Open menu"
           aria-expanded={isOpen}
           onClick={() => setIsOpen((v) => !v)}
         >
-          <span className="hamburgerIcon" />
+          <span className="block w-[22px] h-0.5 bg-white relative before:content-[''] before:absolute before:left-0 before:w-[22px] before:h-0.5 before:bg-white before:top-[-7px] after:content-[''] after:absolute after:left-0 after:w-[22px] after:h-0.5 after:bg-white after:top-[7px]" />
         </button>
 
         {/* Desktop nav + Mobile dropdown uses same UL */}
         <ul
           ref={ulRef}
-          className={`navList ${isOpen ? "open" : ""}`}
+          className={`
+            flex list-none m-0 transition-all duration-200
+
+            /* ✅ Desktop styles at >= 900px */
+            min-[900px]:static min-[900px]:flex-row min-[900px]:max-w-none min-[900px]:opacity-100 min-[900px]:translate-y-0 min-[900px]:pointer-events-auto min-[900px]:gap-[14px]
+            min-[900px]:rounded-[50px] min-[900px]:bg-black/25 min-[900px]:backdrop-blur-lg min-[900px]:border min-[900px]:border-white/10 min-[900px]:py-3.5 min-[900px]:px-[22px]
+
+            /* ✅ Mobile dropdown base (below 900px) */
+            fixed top-[78px] left-[18px] right-[18px] max-w-[420px] flex-col items-stretch gap-2.5 p-3.5 rounded-[20px] bg-black/35 backdrop-blur-lg border border-white/10
+
+            ${
+              isOpen
+                ? "opacity-100 translate-y-0 pointer-events-auto z-[1201]"
+                : "opacity-0 -translate-y-2 pointer-events-none min-[900px]:opacity-100 min-[900px]:translate-y-0 min-[900px]:pointer-events-auto"
+            }
+          `}
           onMouseLeave={() => setPill((p) => ({ ...p, opacity: 0 }))}
         >
-          {/* Desktop hover pill (hidden on mobile via CSS) */}
+          {/* Desktop hover pill (hidden below 900px) */}
           <span
-            className="navPill"
+            className="absolute left-0 top-0 rounded-full bg-brand shadow-[0_0_20px_rgba(205,20,20,0.25)] transition-all duration-[240ms] z-0 pointer-events-none hidden min-[900px]:block"
             style={{
               transform: `translate3d(${pill.x}px, ${pill.y}px, 0)`,
               width: `${pill.w}px`,
@@ -106,12 +120,18 @@ export default function NavBar({ onNavigate }) {
           />
 
           {LINKS.map((l, idx) => (
-            <li key={l.label}>
+            <li key={l.label} className="relative z-[1]">
               <a
                 ref={(node) => (linkRefs.current[idx] = node)}
                 href={l.href}
                 data-target={l.target}
-                className={idx === activeIndex ? "active" : ""}
+                className={`
+                  text-white text-base min-[900px]:text-lg font-logo font-bold no-underline py-2.5 px-3.5 min-[900px]:px-[18px] rounded-full inline-flex items-center justify-center transition-transform duration-180 relative hover:-translate-y-0.5
+                  w-full min-[900px]:w-auto justify-start min-[900px]:justify-center
+
+                  after:content-[''] after:absolute after:left-[18px] after:right-[18px] after:bottom-1.5 after:h-[2px] after:rounded-[2px] after:bg-white after:transition-all after:duration-220 after:origin-center
+                  ${idx === activeIndex ? "after:scale-x-100 after:opacity-100" : "after:scale-x-0 after:opacity-0"}
+                `}
                 onMouseEnter={() => measureTo(idx, true)}
                 onFocus={() => measureTo(idx, true)}
                 onClick={(e) => handleClick(e, idx)}
@@ -123,8 +143,13 @@ export default function NavBar({ onNavigate }) {
         </ul>
       </div>
 
-      {/* Click outside to close on mobile */}
-      {isOpen && <div className="mobileBackdrop" onClick={() => setIsOpen(false)} />}
+      {/* Click outside to close on mobile (< 900px) */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 z-[1100] bg-black/35 backdrop-blur-[2px] min-[900px]:hidden"
+          onClick={() => setIsOpen(false)}
+        />
+      )}
     </nav>
   );
 }

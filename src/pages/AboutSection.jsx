@@ -1,34 +1,90 @@
-import Lottie from "lottie-react";
-import aboutAnimation from "../assets/animations/about.json";
-import "./AboutSection.css";
-
 export default function AboutSection() {
+  const stats = [
+    { label: "Participants", value: "80+", rotation: "-rotate-2" },
+    { label: "In Prizes", value: "$1000", rotation: "rotate-3" },
+    { label: "Hackathon", value: "24 Hours", rotation: "-rotate-1" },
+  ];
+
   return (
-    <section id="about" className="aboutSection">
-      <h1 className="aboutTitle">About</h1>
-      
-      <div className="aboutContainer">
-        <div className="aboutTextContent">
-          <p>
-            CougarHacks is a 36-hour hackathon hosted at Caldwell University, where you team up, build something awesome, and have a lot of fun doing it. It's basically a full weekend of creating—coding, designing, brainstorming, and shipping a project you're proud of.
-          </p>
-          <p>
-            This year, we're opening CougarHacks to students from every university, not just Caldwell. So whether you're a beginner or you've done hackathons before, you're welcome here. Come with a team, come solo, or come with zero ideas—we'll help you find people and figure out a project.
-          </p>
-          <p>
-            During the event, you'll have mentors, quick workshops, and volunteers around to keep things running smoothly. We'll also have snacks, coffee, and good energy to keep you going through the late-night build sessions.
-          </p>
-          <p>
-            At the end, teams will demo their projects, we'll give out prizes, and you'll leave with something real to put on GitHub, your resume, and your portfolio.
-          </p>
-        </div>
-        
-        <div className="aboutAnimationContainer">
-          <Lottie 
-            animationData={aboutAnimation} 
-            loop={true}
-            className="aboutAnimation"
-          />
+    /* 
+      CHANGES MADE:
+      ✅ z-[60]  -> above hero (hero is z-30)
+      ✅ -mt-24  -> slight overlap so it covers hero earlier
+      ✅ bg-black added directly for solid cover
+    */
+    <section
+      id="about"
+      className="
+        sticky top-0
+        min-h-screen
+        z-[60]
+        -mt-24
+        flex flex-col
+        bg-black
+      "
+    >
+      {/* Content Layer */}
+      <div className="relative z-10 flex flex-col grow">
+
+        {/* Title */}
+        <h1 className="text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit mb-[30px] uppercase">
+          About
+        </h1>
+
+        {/* Main Content */}
+        <div className="flex flex-col md:flex-row gap-5 md:gap-[30px] lg:gap-10 grow px-4 md:px-5 lg:px-6 pb-5 md:pb-[30px] lg:pb-10 max-w-[2000px] mx-auto w-full box-border items-center">
+
+          {/* Description Box */}
+          <div className="flex-1 min-w-0 bg-white border-[3px] border-brand rounded-xl p-6 box-border">
+            <p className="text-black text-sm sm:text-[15px] md:text-base lg:text-2xl leading-[1.5] sm:leading-[1.6] lg:leading-[1.8] font-medium mb-3.5 lg:mb-[18px]">
+              CougarHacks is a 36-hour hackathon at Caldwell University where
+              students team up to design, build, and launch real projects in a
+              single weekend. Open to all universities and all skill levels, it’s
+              a space to learn, create, and have fun — with mentors, workshops,
+              prizes, and plenty of snacks. Walk in with an idea, walk out with
+              something you’re proud to put on GitHub.
+            </p>
+          </div>
+
+          {/* Stats Side */}
+          <div className="flex-1 min-w-0 w-full flex flex-col items-center justify-center gap-6 py-10">
+
+            <h2 className="text-white text-2xl sm:text-3xl font-bold mb-4 uppercase tracking-wider">
+              CougarHacks 2025 Recap
+            </h2>
+
+            <div className="flex flex-wrap justify-center gap-6">
+              {stats.map((stat, i) => (
+                <div
+                  key={i}
+                  className={`
+                    ${stat.rotation}
+                    bg-brand
+                    border-[3px] border-white
+                    p-6 rounded-2xl
+                    shadow-[8px_8px_0px_rgba(255,255,255,0.2)]
+                    hover:rotate-0
+                    transition-transform duration-300
+                    flex flex-col items-center justify-center
+                    min-w-[180px]
+                  `}
+                >
+                  <span className="text-white text-4xl sm:text-5xl font-black mb-1">
+                    {stat.value}
+                  </span>
+                  <span className="text-white/90 text-sm sm:text-base font-bold uppercase tracking-tight">
+                    {stat.label}
+                  </span>
+                </div>
+              ))}
+            </div>
+
+            <p className="text-white/70 text-sm sm:text-base md:text-lg font-medium text-center mt-8 max-w-[500px] leading-relaxed italic">
+              This year, we're going even bigger with more prizes, more
+              workshops, and plenty of surprises. Get ready for CougarHacks 2026
+            </p>
+
+          </div>
         </div>
       </div>
     </section>

@@ -1,7 +1,6 @@
 import { useState } from "react";
 import Lottie from "lottie-react";
 import faqAnimation from "../assets/animations/faq.json";
-import "./FAQSection.css";
 
 const FAQ_ITEMS = [
   {
@@ -104,22 +103,24 @@ export default function FAQSection() {
   };
 
   return (
-    <section id="faq" className="faqSection">
-      <h1 className="faqTitle">FAQ</h1>
+    <section id="faq" className="relative min-h-screen bg-black z-90 flex flex-col">
+      <h1 className="text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit mb-0 uppercase">
+        FAQ
+      </h1>
       
-      <div className="faqContainer">
-        <div className="faqAccordionContent">
-          <div className="faqAccordion">
+      <div className="flex flex-col md:flex-row gap-5 md:gap-[30px] lg:gap-10 grow px-4 md:px-5 lg:px-6 py-[20px] md:py-[25px] lg:py-[30px] max-w-[1400px] mx-auto w-full box-border items-start">
+        <div className="flex-1 min-w-0 md:max-h-[calc(100vh-200px)] md:overflow-y-auto pr-0 md:pr-3 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-track]:bg-white/5 [&::-webkit-scrollbar-thumb]:bg-brand [&::-webkit-scrollbar-thumb]:rounded-full">
+          <div className="flex flex-col gap-3">
             {FAQ_ITEMS.map((item) => (
-              <div key={item.id} className="faqItem">
+              <div key={item.id} className="bg-white border-2 border-brand rounded-lg overflow-hidden">
                 <button
-                  className="faqQuestion"
+                  className="w-full p-3 sm:p-3.5 md:p-4 bg-white border-none cursor-pointer flex justify-between items-center gap-3 text-[13px] sm:text-sm md:text-[15px] font-semibold text-brand transition-all duration-180 hover:bg-[#f5f5f5]"
                   onClick={() => toggleExpand(item.id)}
                   aria-expanded={expandedId === item.id}
                 >
-                  <span>{item.question}</span>
+                  <span className="text-left">{item.question}</span>
                   <svg
-                    className={`faqIcon ${expandedId === item.id ? "open" : ""}`}
+                    className={`min-w-[24px] h-6 transition-transform duration-200 text-brand ${expandedId === item.id ? "rotate-180" : ""}`}
                     width="24"
                     height="24"
                     viewBox="0 0 24 24"
@@ -131,8 +132,10 @@ export default function FAQSection() {
                   </svg>
                 </button>
                 {expandedId === item.id && (
-                  <div className="faqAnswer">
-                    <p>{item.answer}</p>
+                  <div className="px-3 sm:px-[14px] md:px-4 pb-3 sm:pb-[14px] md:pb-4 border-t border-brand animate-[expandDown_200ms_ease_forwards]">
+                    <p className="mt-3 text-brand text-xs sm:text-[13px] md:text-sm leading-[1.5] sm:leading-[1.6]">
+                      {item.answer}
+                    </p>
                   </div>
                 )}
               </div>
@@ -140,11 +143,11 @@ export default function FAQSection() {
           </div>
         </div>
         
-        <div className="faqAnimationContainer">
+        <div className="flex-1 min-w-0 h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] w-full flex items-center justify-center">
           <Lottie 
             animationData={faqAnimation} 
             loop={true}
-            className="faqAnimation"
+            className="w-full h-full"
           />
         </div>
       </div>
