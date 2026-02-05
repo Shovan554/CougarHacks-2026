@@ -53,8 +53,8 @@ export default function ItinerarySection() {
                 }`}
                 onClick={() => setSelectedDay(dayKey)}
               >
-                <span className="font-semibold text-xs sm:text-[15px]">{data.dayName}</span>
-                <span className={`font-normal text-[10px] sm:text-xs ${isActive ? "text-white" : "text-brand opacity-70"}`}>
+                <span className="font-semibold text-[15px] sm:text-[18px]">{data.dayName}</span>
+                <span className={`font-normal text-[13px] sm:text-[15px] ${isActive ? "text-white" : "text-brand opacity-70"}`}>
                   {dayKey === "saturday" && "Apr 25"}
                   {dayKey === "sunday" && "Apr 26"}
                 </span>
@@ -65,7 +65,7 @@ export default function ItinerarySection() {
 
         {/* Day Schedule */}
         <div className="flex flex-col gap-5">
-          <h2 className="text-white text-xl sm:text-[1.4rem] md:text-[1.8rem] font-semibold m-0">
+          <h2 className="text-white text-[23px] sm:text-[calc(1.4rem+3px)] md:text-[calc(1.8rem+3px)] font-semibold m-0">
             {currentData.date}
           </h2>
 
@@ -76,16 +76,16 @@ export default function ItinerarySection() {
                 className="grid grid-cols-[90px_1fr] sm:grid-cols-[110px_1fr] md:grid-cols-[140px_1fr] gap-[10px] sm:gap-5 p-[10px] sm:p-4 border-b border-[#f0f0f0] last:border-none last:pb-0 items-start"
               >
                 {/* Time */}
-                <div className="font-bold text-xs sm:text-sm md:text-base text-brand min-w-[90px] sm:min-w-[110px] md:min-w-[140px] whitespace-nowrap">
+                <div className="font-bold text-[15px] sm:text-[17px] md:text-[19px] text-brand min-w-[90px] sm:min-w-[110px] md:min-w-[140px] whitespace-nowrap">
                   {event.time}
                 </div>
 
                 {/* Event */}
                 <div className="flex flex-col gap-1.5">
-                  <h4 className="m-0 text-[13px] sm:text-sm md:text-base font-semibold text-black">
+                  <h4 className="m-0 text-[16px] sm:text-[17px] md:text-[19px] font-semibold text-black">
                     {event.title}
                   </h4>
-                  <p className="m-0 text-[11px] sm:text-xs md:text-sm text-[#666] leading-[1.4]">
+                  <p className="m-0 text-[14px] sm:text-[15px] md:text-[17px] text-[#666] leading-[1.4]">
                     {event.description}
                   </p>
                 </div>

@@ -152,7 +152,7 @@ export default function FAQSection() {
   return (
     <section id="faq" className="relative min-h-screen bg-gradient-to-b from-[#071225] via-[#050A14] to-[#02040A] z-[90] flex flex-col">
       {/* Title */}
-      <h1 className="text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit uppercase">
+      <h1 className="text-white text-[calc(1.8rem+3px)] sm:text-[calc(2.2rem+3px)] md:text-[calc(2.8rem+3px)] lg:text-[calc(3.5rem+3px)] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit uppercase">
         FAQ
       </h1>
 
@@ -191,7 +191,7 @@ export default function FAQSection() {
 
               <button
                 onClick={() => toggleExpand(item.id)}
-                className="w-full p-4 flex justify-between items-center font-semibold text-brand text-left hover:bg-gray-100 transition"
+                className="w-full p-4 flex justify-between items-center text-lg font-semibold text-brand text-left hover:bg-gray-100 transition"
               >
                 {item.question}
 
@@ -202,7 +202,7 @@ export default function FAQSection() {
 
               {expandedId === item.id && (
                 <div className="px-4 pb-4 border-t border-brand">
-                  <p className="text-sm text-brand mt-3">{item.answer}</p>
+                  <p className="text-base text-brand mt-3">{item.answer}</p>
                 </div>
               )}
             </div>
