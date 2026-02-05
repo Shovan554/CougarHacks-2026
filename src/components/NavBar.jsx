@@ -5,7 +5,7 @@ const LINKS = [
   { label: "About", href: "#about", target: 1 },
   { label: "Themes", href: "#themes", target: 2 },
   { label: "Sponsors", href: "#sponsors", target: 3 },
-  { label: "Team", href: "#team", target: 4 },
+  // { label: "Team", href: "#team", target: 4 },
   { label: "FAQ", href: "#faq", target: 5 },
   { label: "Itinerary", href: "#itinerary", target: 6 },
 ];

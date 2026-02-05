@@ -2,7 +2,7 @@ export default function ThemesSection() {
   return (
     <section
       id="themes"
-      className="relative min-h-screen bg-black z-[70] flex flex-col items-center justify-center"
+      className="relative min-h-screen bg-gradient-to-b from-[#162A55] via-[#2B1F4D] to-[#3B1B6D]"
     >
       <h1 className="absolute top-0 left-0 text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit uppercase">
         Themes

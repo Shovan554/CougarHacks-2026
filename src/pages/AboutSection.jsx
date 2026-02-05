@@ -6,12 +6,7 @@ export default function AboutSection() {
   ];
 
   return (
-    /* 
-      CHANGES MADE:
-      ✅ z-[60]  -> above hero (hero is z-30)
-      ✅ -mt-24  -> slight overlap so it covers hero earlier
-      ✅ bg-black added directly for solid cover
-    */
+    
     <section
       id="about"
       className="
@@ -20,7 +15,9 @@ export default function AboutSection() {
         z-[60]
         -mt-24
         flex flex-col
-        bg-black
+        bg-gradient-to-b from-[#000000] via-[#0A1022] to-[#162A55]
+
+
       "
     >
       {/* Content Layer */}

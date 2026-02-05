@@ -39,7 +39,7 @@ export default function App() {
   useEffect(() => {
     const loadingTimer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 1000);
 
     return () => clearTimeout(loadingTimer);
   }, []);
@@ -58,14 +58,11 @@ export default function App() {
       const scale = 1 - p * 0.05;
       layer.style.transform = `scale(${scale})`;
 
-      // Fade entire hero
       layer.style.opacity = String(1 - p);
 
-      // Move the front mountain up faster as we scroll
       const frontY = -p * h * 0.8;
       layer.style.setProperty("--frontY", `${frontY}px`);
 
-      // When past the first screen, remove hero completely
       if (p >= 1) {
         layer.style.pointerEvents = "none";
         layer.style.visibility = "hidden";
@@ -105,7 +102,6 @@ export default function App() {
         ref={layerRef}
         className="fixed inset-0 z-30 overflow-hidden will-change-transform touch-pan-y pointer-events-auto"
       >
-        {/* Shared stacking context */}
         <div className="relative w-full h-full">
           {/* Background Cloud */}
           <img
@@ -115,27 +111,51 @@ export default function App() {
             className="absolute inset-0 w-full h-full object-cover z-0"
           />
 
-          {/* ✅ MID LAYER: Title + Logo BEHIND the mountains */}
+          {/* ✅ MID LAYER: Title + Logo (title centered, logo moves at <=500px) */}
           <div className="absolute inset-0 z-[10]">
-            <div className="absolute top-[40%] lg:top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-row items-center gap-8 font-logo text-black uppercase">
+            {/* Centered title block ALWAYS */}
+            <div
+              className="
+                absolute top-[40%] left-1/2 -translate-y-1/2
+                -translate-x-1/2
+                min-[1000px]:-translate-x-[calc(50%+150px)]
+                font-logo text-black uppercase text-center
+              "
+            >
+
+
               <div className="flex flex-col items-center">
-                <span className="text-brand text-[3.5rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
+                <span className="text-brand text-[3.2rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
                   COUGAR
                 </span>
-                <span className="text-black text-[3.5rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
+                <span className="text-black text-[3.2rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
                   HACKS
                 </span>
               </div>
-
-              <img
-                src={logo}
-                alt="CougarHacks Logo"
-                className="relative -left-4 sm:-left-6 lg:-left-25 w-[120px] sm:w-[280px] lg:w-[450px] h-auto object-contain"
-              />
             </div>
+
+            {/* Logo: normal (next to title) for >500px, pinned top-left for <=500px */}
+            <img
+              src={logo}
+              alt="CougarHacks Logo"
+              className="
+                object-contain
+
+                /* default layout (above 500px): sit near centered title */
+                absolute top-[40%] left-1/2
+                translate-x-[210px] -translate-y-1/2
+                w-[120px] sm:w-[280px] lg:w-[450px]
+
+              /* <=850px: pin to top-left and stay there */
+              max-[850px]:top-4 max-[850px]:left-4
+              max-[850px]:translate-x-0 max-[850px]:-translate-y-0
+              max-[850px]:w-[90px]
+
+              "
+            />
           </div>
 
-          {/* ✅ FRONT MOUNTAINS: Above title/logo */}
+          {/* Mountains (above title/logo) */}
           <img
             src={mountainsFront}
             alt="Mountains Front"
@@ -143,19 +163,23 @@ export default function App() {
             style={{ transform: `translate3d(0, var(--frontY, 0px), 0)` }}
           />
 
-          {/* ✅ TOP LAYER: Date + Button IN FRONT of mountains */}
+          {/* Date + Button (in front of mountains) */}
           <div className="absolute inset-0 z-[30]">
-            <div className="absolute top-[55%] sm:top-[55%] left-1/2 -translate-x-1/2 flex flex-col items-center">
+            <div className="absolute top-[55%] left-1/2 -translate-x-1/2 flex flex-col items-center">
               <div className="font-logo text-black text-center pointer-events-none mb-5">
                 <span className="whitespace-nowrap text-[0.9rem] sm:text-[1.4rem] lg:text-[5rem] font-medium tracking-[1px]">
-                    2026 April 25-26
+                  2026 April 25-26
                 </span>
-
               </div>
 
-              <button className="relative bg-brand hover:bg-[#e31616] active:translate-y-1 text-white px-6 py-3 sm:px-12 sm:py-5 text-[0.9rem] sm:text-[1.4rem] font-extrabold uppercase tracking-[1.5px] rounded-xl cursor-pointer shadow-[0_8px_0_var(--color-brand-dark)] hover:shadow-[0_10px_0_var(--color-brand-dark)] active:shadow-[0_3px_0_var(--color-brand-dark)] transition-all duration-100 slide-up">
+              <a
+                href="https://cougarhacksportal.onrender.com/login"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative bg-brand hover:bg-[#e31616] active:translate-y-1 text-white px-6 py-3 sm:px-12 sm:py-5 text-[0.9rem] sm:text-[1.4rem] font-extrabold uppercase tracking-[1.5px] rounded-xl cursor-pointer shadow-[0_8px_0_var(--color-brand-dark)] hover:shadow-[0_10px_0_var(--color-brand-dark)] active:shadow-[0_3px_0_var(--color-brand-dark)] transition-all duration-100 slide-up inline-block text-center"
+              >
                 Register Now
-              </button>
+              </a>
             </div>
           </div>
         </div>

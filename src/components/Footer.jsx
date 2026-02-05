@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-black/25 backdrop-blur-lg border-t border-white/10 z-50 pointer-events-auto">
+    <footer className="fixed bottom-0 left-0 w-full bg-black/25 backdrop-blur-lg border-t border-white/10 z-200 pointer-events-auto">
       <div className="flex justify-between items-center w-full px-[18px] py-3 sm:px-6 sm:py-4 box-border">
         <div className="flex items-center gap-2 sm:gap-3">
           <span className="text-white text-xs sm:text-sm">Follow us on Instagram</span>

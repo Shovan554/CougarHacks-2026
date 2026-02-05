@@ -1,6 +1,6 @@
 export default function SponsorsSection() {
   return (
-    <section id="sponsors" className="relative min-h-screen bg-black z-80 flex flex-col items-center justify-center">
+    <section id="sponsors" className="relative min-h-screen bg-gradient-to-b from-[#3B1B6D] via-[#1A2146] to-[#071225]  z-80 flex flex-col items-center justify-center">
       <h1 className="absolute top-0 left-0 text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit uppercase">
         Sponsors
       </h1>
