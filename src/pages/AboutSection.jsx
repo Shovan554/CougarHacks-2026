@@ -17,10 +17,10 @@ export default function AboutSection() {
       className="
         sticky top-0
         min-h-screen
-        z-[60]
+        z-60
         -mt-24
         flex flex-col
-        bg-gradient-to-b from-[#000000] via-[#0A1022] to-[#162A55]
+        bg-linear-to-b from-[#000000] via-[#0A1022] to-[#162A55]
         pb-20
       "
     >
@@ -35,7 +35,7 @@ export default function AboutSection() {
         <div className="flex flex-col md:flex-row gap-5 md:gap-[30px] lg:gap-10 px-4 md:px-5 lg:px-6 max-w-[2000px] mx-auto w-full box-border items-center mb-16">
           {/* Description Box */}
           <div className="flex-1 min-w-0 bg-white border-[3px] border-brand rounded-xl p-6 box-border">
-            <p className="text-black text-sm sm:text-[15px] md:text-base lg:text-2xl leading-[1.5] sm:leading-[1.6] lg:leading-[1.8] font-content font-medium mb-3.5 lg:mb-[18px]">
+            <p className="text-black text-sm sm:text-[15px] md:text-base lg:text-2xl leading-normal sm:leading-[1.6] lg:leading-[1.8] font-content font-medium mb-3.5 lg:mb-[18px]">
               CougarHacks is a 36-hour hackathon at Caldwell University where
               students team up to design, build, and launch real projects in a
               single weekend. Open to all universities and all skill levels, it’s
