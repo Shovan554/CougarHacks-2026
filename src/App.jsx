@@ -53,7 +53,7 @@ export default function App() {
 
     const update = () => {
       const h = window.innerHeight || 1;
-      const p = Math.min(1, Math.max(0, window.scrollY / h)); // 0..1
+      const p = Math.min(1, Math.max(0, window.scrollY / h));
 
       const scale = 1 - p * 0.05;
       layer.style.transform = `scale(${scale})`;
@@ -103,6 +103,7 @@ export default function App() {
         className="fixed inset-0 z-30 overflow-hidden will-change-transform touch-pan-y pointer-events-auto"
       >
         <div className="relative w-full h-full">
+
           {/* Background Cloud */}
           <img
             ref={bgRef}
@@ -111,9 +112,9 @@ export default function App() {
             className="absolute inset-0 w-full h-full object-cover z-0"
           />
 
-          {/* ✅ MID LAYER: Title + Logo (title centered, logo moves at <=500px) */}
-          <div className="absolute inset-0 z-[10]">
-            {/* Centered title block ALWAYS */}
+          {/* Title + Logo */}
+          <div className="absolute inset-0 -top-[80px] z-[10]">
+
             <div
               className="
                 absolute top-[40%] left-1/2 -translate-y-1/2
@@ -122,8 +123,6 @@ export default function App() {
                 font-logo text-black uppercase text-center
               "
             >
-
-
               <div className="flex flex-col items-center">
                 <span className="text-brand text-[3.2rem] sm:text-[4.3rem] lg:text-[10rem] leading-[0.8] tracking-[2px]">
                   COUGAR
@@ -134,36 +133,30 @@ export default function App() {
               </div>
             </div>
 
-            {/* Logo: normal (next to title) for >500px, pinned top-left for <=500px */}
             <img
               src={logo}
               alt="CougarHacks Logo"
               className="
                 object-contain
-
-                /* default layout (above 500px): sit near centered title */
                 absolute top-[40%] left-1/2
                 translate-x-[210px] -translate-y-1/2
                 w-[120px] sm:w-[280px] lg:w-[450px]
-
-              /* <=850px: pin to top-left and stay there */
-              max-[850px]:top-4 max-[850px]:left-4
-              max-[850px]:translate-x-0 max-[850px]:-translate-y-0
-              max-[850px]:w-[90px]
-
+                max-[850px]:top-4 max-[850px]:left-4
+                max-[850px]:translate-x-0 max-[850px]:-translate-y-[calc(10%-80px)]
+                max-[850px]:w-[90px]
               "
             />
           </div>
 
-          {/* Mountains (above title/logo) */}
+          {/* Mountains (moved UP 10px ONLY) */}
           <img
             src={mountainsFront}
             alt="Mountains Front"
-            className="absolute bottom-[-150px] left-0 w-full h-auto z-[20] will-change-transform pointer-events-none"
+            className="absolute bottom-[-60px] left-0 w-full h-auto z-[20] will-change-transform pointer-events-none"
             style={{ transform: `translate3d(0, var(--frontY, 0px), 0)` }}
           />
 
-          {/* Date + Button (in front of mountains) */}
+          {/* Date + Button */}
           <div className="absolute inset-0 z-[30]">
             <div className="absolute top-[55%] left-1/2 -translate-x-1/2 flex flex-col items-center">
               <div className="font-logo text-black text-center pointer-events-none mb-5">
@@ -182,11 +175,12 @@ export default function App() {
               </a>
             </div>
           </div>
+
         </div>
       </div>
 
-      {/* Spacer */}
-      <div className="h-screen pointer-events-none" />
+      {/* Spacer (unchanged page size) */}
+      <div className="h-[120vh] pointer-events-none" />
 
       {/* Sections */}
       <AboutSection />
