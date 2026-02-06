@@ -150,11 +150,22 @@ export default function App() {
 
           {/* Mountains (moved UP 10px ONLY) */}
           <img
-            src={mountainsFront}
-            alt="Mountains Front"
-            className="absolute bottom-[-20px] left-0 w-full h-auto z-[20] will-change-transform pointer-events-none"
-            style={{ transform: `translate3d(0, var(--frontY, 0px), 0)` }}
-          />
+              src={mountainsFront}
+              alt="Mountains Front"
+              className="
+                absolute 
+                bottom-[-20px] 
+                max-[850px]:bottom-[80px]   /* 👈 move UP on small screens */
+                left-0 
+                w-full 
+                h-auto 
+                z-[20] 
+                will-change-transform 
+                pointer-events-none
+              "
+              style={{ transform: `translate3d(0, var(--frontY, 0px), 0)` }}
+            />
+
 
           {/* Date + Button */}
           <div className="absolute inset-0 z-[30]">
