@@ -152,7 +152,7 @@ export default function App() {
           <img
             src={mountainsFront}
             alt="Mountains Front"
-            className="absolute bottom-[-60px] left-0 w-full h-auto z-[20] will-change-transform pointer-events-none"
+            className="absolute bottom-[-20px] left-0 w-full h-auto z-[20] will-change-transform pointer-events-none"
             style={{ transform: `translate3d(0, var(--frontY, 0px), 0)` }}
           />
 
@@ -180,7 +180,7 @@ export default function App() {
       </div>
 
       {/* Spacer (unchanged page size) */}
-      <div className="h-[120vh] pointer-events-none" />
+      <div className="h-[100vh] pointer-events-none" />
 
       {/* Sections */}
       <AboutSection />
