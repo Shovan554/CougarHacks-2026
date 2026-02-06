@@ -155,7 +155,7 @@ export default function App() {
               className="
                 absolute 
                 bottom-[-20px] 
-                max-[850px]:bottom-[20px]   /* 👈 move UP on small screens */
+                max-[850px]:bottom-[60px]   /* 👈 move UP on small screens */
                 left-0 
                 w-full 
                 h-auto 
