@@ -21,6 +21,37 @@ export default function NavBar({ onNavigate }) {
   // mobile hamburger
   const [isOpen, setIsOpen] = useState(false);
 
+  // Intersection Observer to track active section
+  useLayoutEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-50% 0px -50% 0px", // Trigger when section is in the middle of the viewport
+      threshold: 0,
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const index = LINKS.findIndex((link) => link.href === `#${id}`);
+          if (index !== -1) {
+            setActiveIndex(index);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    LINKS.forEach((link) => {
+      const id = link.href.replace("#", "");
+      const element = document.getElementById(id);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const measureTo = (index, show = true) => {
     const ul = ulRef.current;
     const el = linkRefs.current[index];

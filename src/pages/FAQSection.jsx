@@ -132,6 +132,21 @@ const FAQ_ITEMS = [
     answer:
       "We'd love help. Volunteers can support check-in, food, help desk, Discord support, mentors, and more. Sponsors can support prizes, meals, and swag. Check the site for the volunteer/sponsor forms.",
   },
+    {
+    id: 19,
+    category: "Logistics & Rules",
+    question: "Can high school students or participants under 18 attend?",
+    answer:
+      "Yes. High school students are welcome to participate. However, for safety reasons, participants under 18 cannot stay overnight. They must leave the venue between 12:00 AM and 5:00 AM and may return in the morning.",
+  },
+  {
+    id: 20,
+    category: "Logistics & Rules",
+    question: "Where will the hackathon take place?",
+    answer:
+      "CougarHacks will be hosted at Caldwell University, located at 120 Bloomfield Avenue, Caldwell, NJ 07006.",
+  },
+
 ];
 
 /* ---------------- COMPONENT ---------------- */

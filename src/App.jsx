@@ -182,7 +182,7 @@ export default function App() {
                 rel="noopener noreferrer"
                 className="relative bg-brand hover:bg-[#e31616] active:translate-y-1 text-white px-6 py-3 sm:px-12 sm:py-5 text-[0.9rem] sm:text-[1.4rem] font-extrabold uppercase tracking-[1.5px] rounded-xl cursor-pointer shadow-[0_8px_0_var(--color-brand-dark)] hover:shadow-[0_10px_0_var(--color-brand-dark)] active:shadow-[0_3px_0_var(--color-brand-dark)] transition-all duration-100 slide-up inline-block text-center"
               >
-                Register Now
+                Apply Now
               </a>
             </div>
           </div>
@@ -191,7 +191,7 @@ export default function App() {
       </div>
 
       {/* Spacer (unchanged page size) */}
-      <div className="h-[100vh] pointer-events-none" />
+      <div id="home" className="h-[100vh] pointer-events-none" />
 
       {/* Sections */}
       <AboutSection />

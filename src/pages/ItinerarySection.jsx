@@ -1,4 +1,6 @@
 import { useMemo, useState } from "react";
+import locationIcon from "../assets/images/location.png";
+import discordIcon from "../assets/images/discord.png";
 
 const ITINERARY_DATA = {
   saturday: {
@@ -105,16 +107,46 @@ export default function ItinerarySection() {
         </div>
       </div>
 
-      {/* Credit */}
-      <div className="w-full flex justify-center pb-8 ">
+      {/* Info & Links */}
+      <div className="w-full flex flex-col items-center justify-center mb-8 gap-4 px-4 text-center">
+        <div className="flex flex-wrap justify-center gap-6 sm:gap-10">
+          <a 
+            href="https://maps.app.goo.gl/MC4FRt97YpSXDno67" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-white/90 hover:text-brand transition-colors duration-200 font-content text-sm sm:text-base no-underline flex items-center gap-2"
+          >
+            <img src={locationIcon} alt="" className="h-5 w-auto object-contain" />
+            <span className="font-bold">Caldwell University Location</span>
+          </a>
 
+          <a 
+            href="https://discord.gg/fcfENbqS" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="text-white/90 hover:text-brand transition-colors duration-200 font-content text-sm sm:text-base no-underline flex items-center gap-2"
+          >
+            <img src={discordIcon} alt="" className="h-5 w-auto object-contain" />
+            <span className="font-bold">Join our Discord</span>
+          </a>
+        </div>
+
+        <div className="text-white/70 font-content text-sm sm:text-base">
+          Contact us at <a href="mailto:cougarhacks@caldwell.edu" className="text-brand font-bold no-underline hover:underline">cougarhacks@caldwell.edu</a>
+        </div>
+      </div>
+
+      {/* Credit */}
+      <div className="w-full flex flex-col items-center justify-center pb-8 gap-2">
+        <div className="w-12 h-0.5 bg-brand/30 rounded-full mb-1" />
         <a 
           href="https://shovanraut.vercel.app" 
           target="_blank" 
           rel="noopener noreferrer"
-          className="text-white/50 hover:text-brand transition-colors duration-200 font-logo text-xs sm:text-sm no-underline"
+          className="text-white/80 hover:text-brand transition-all duration-300 font-logo text-sm sm:text-base no-underline flex items-center gap-2 group hover:scale-105"
         >
-          Website by Shovan Raut
+          <span className="opacity-60 group-hover:opacity-100">Website by</span>
+          <span className="font-bold tracking-wider">Shovan Raut</span>
         </a>
       </div>
 
