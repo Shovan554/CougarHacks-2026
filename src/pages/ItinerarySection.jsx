@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import locationIcon from "../assets/images/location.png";
-import discordIcon from "../assets/images/discord.png";
+import instagramIcon from "../assets/images/instagram.png";
 
 const ITINERARY_DATA = {
   saturday: {
@@ -37,7 +37,7 @@ export default function ItinerarySection() {
   return (
     <section
   id="itinerary"
-  className="relative min-h-screen bg-gradient-to-b from-[#02040A] via-[#12060A] to-[#2A0A10] z-[100] flex flex-col pb-32"
+  className="relative bg-gradient-to-b from-[#02040A] via-[#12060A] to-[#2A0A10] z-[100] flex flex-col py-16 md:py-24 pb-32"
 >
 
       <h1 className="text-white text-[1.8rem] sm:text-[2.2rem] md:text-[2.8rem] lg:text-[3.5rem] font-logo font-bold border-b-[3px] border-brand pb-[15px] mt-5 md:mt-10 ml-4 md:ml-6 w-fit mb-[30px] uppercase">
@@ -121,13 +121,13 @@ export default function ItinerarySection() {
           </a>
 
           <a 
-            href="https://discord.gg/fcfENbqS" 
+            href="https://www.instagram.com/cougarhacks_/" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-white/90 hover:text-brand transition-colors duration-200 font-content text-sm sm:text-base no-underline flex items-center gap-2"
           >
-            <img src={discordIcon} alt="" className="h-5 w-auto object-contain" />
-            <span className="font-bold">Join our Discord</span>
+            <img src={instagramIcon} alt="" className="h-5 w-auto object-contain" />
+            <span className="font-bold">Follow us on Instagram</span>
           </a>
         </div>
 

@@ -4,6 +4,7 @@ export default function ThemesSection() {
       id="themes"
       className="
         relative
+        z-[40]
         flex flex-col
         items-center
         bg-gradient-to-b

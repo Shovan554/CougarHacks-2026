@@ -1,8 +1,8 @@
 export default function AboutSection() {
   const stats = [
-    { label: "Participants", value: "80+", rotation: "-rotate-2" },
-    { label: "In Prizes", value: "$1000", rotation: "rotate-3" },
-    { label: "Hackathon", value: "24 Hours", rotation: "-rotate-1" },
+    { label: "Participants", value: "80+" },
+    { label: "In Prizes", value: "$1000" },
+    { label: "Hackathon", value: "24 Hours" },
   ];
 
   const features = [
@@ -15,13 +15,13 @@ export default function AboutSection() {
     <section
       id="about"
       className="
-        sticky top-0
-        min-h-screen
+        relative
         z-60
         -mt-24
         flex flex-col
         bg-linear-to-b from-[#000000] via-[#0A1022] to-[#162A55]
-        pb-20
+        py-16 md:py-24
+        pb-32
       "
     >
       {/* Content Layer */}
@@ -70,32 +70,19 @@ export default function AboutSection() {
           </div>
         </div>
 
-        {/* 2025 Recap Section (Moved Below) */}
-        <div className="w-full flex flex-col items-center justify-center gap-6 py-10 px-4">
-          <h2 className="text-white text-2xl sm:text-3xl font-bold mb-4 uppercase tracking-wider text-center">
-            CougarHacks 2025 Recap
+        {/* 2025 Recap Section */}
+        {/* <div className="w-full flex flex-col items-center justify-center gap-4 py-8 px-4 opacity-70">
+          <h2 className="text-white text-lg sm:text-xl font-bold mb-2 uppercase tracking-widest text-center font-logo">
+            2025 Recap
           </h2>
 
-          <div className="flex flex-wrap justify-center gap-6">
+          <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {stats.map((stat, i) => (
-              <div
-                key={i}
-                className={`
-                  ${stat.rotation}
-                  bg-white
-                  border-[3px] border-brand
-                  p-6 rounded-2xl
-                  shadow-[8px_8px_0px_rgba(205,20,20,0.2)]
-                  hover:rotate-0
-                  transition-transform duration-300
-                  flex flex-col items-center justify-center
-                  min-w-[180px]
-                `}
-              >
-                <span className="text-brand text-4xl sm:text-5xl font-black mb-1">
+              <div key={i} className="flex flex-col items-center justify-center">
+                <span className="text-white text-2xl sm:text-3xl font-black font-content">
                   {stat.value}
                 </span>
-                <span className="text-brand/90 text-sm sm:text-base font-bold uppercase tracking-tight">
+                <span className="text-white/60 text-xs sm:text-sm font-bold uppercase tracking-widest font-content">
                   {stat.label}
                 </span>
               </div>
@@ -103,7 +90,7 @@ export default function AboutSection() {
           </div>
 
          
-        </div>
+        </div> */}
       </div>
     </section>
   );

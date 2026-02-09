@@ -1,21 +1,23 @@
 import caldwellLogo from "../assets/images/caldwellLogo.png";
-
+import discordIcon from "../assets/images/discord.png";
 export default function Footer() {
   return (
-    <footer className="fixed bottom-0 left-0 w-full bg-black/25 backdrop-blur-lg border-t border-white/10 z-110 pointer-events-auto">
+    <footer className="fixed bottom-0 left-0 w-full bg-black/25 backdrop-blur-lg border-t border-white/10 z-110 pointer-events-auto font-content">
       <div className="flex justify-between items-center w-full px-[18px] py-3 sm:px-6 sm:py-4 box-border">
 
         {/* LEFT SIDE — Instagram */}
         <div className="flex items-center gap-2 sm:gap-3">
           <a 
-            href="https://www.instagram.com/cougarhacks_/" 
+            href="https://discord.gg/fcfENbqS" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center text-white no-underline transition-all duration-180 p-1.5 sm:p-2 sm:px-3 rounded-lg hover:text-brand hover:scale-110"
-            aria-label="Instagram"
+            
           >
+            <img src={discordIcon} alt="" className="h-5 w-auto object-contain" />
             <span className="text-white text-xs sm:text-sm">
-              Follow us on Instagram
+              
+              Join Our Discord
             </span>
 
            
